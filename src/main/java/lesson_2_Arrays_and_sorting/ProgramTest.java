@@ -3,6 +3,10 @@ package lesson_2_Arrays_and_sorting;
 import java.util.Iterator;
 import java.util.Random;
 
+/**
+ * Данный класс является дубликатом тестирования,
+ * которое расположено в папке test
+ */
 public class ProgramTest {
 
 

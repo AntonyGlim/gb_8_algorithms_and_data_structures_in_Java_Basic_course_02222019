@@ -18,7 +18,7 @@ public class MyArrayListSortingTest {
 
     private final int MAX = 100;
     private final int MIN = 0;
-    private final int SIZE = 100000;
+    private final int SIZE = 1000;
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {

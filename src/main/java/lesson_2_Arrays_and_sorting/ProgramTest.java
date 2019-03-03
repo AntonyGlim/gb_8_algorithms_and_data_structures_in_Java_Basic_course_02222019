@@ -1,6 +1,7 @@
 package lesson_2_Arrays_and_sorting;
 
 import java.util.Iterator;
+import java.util.Random;
 
 public class ProgramTest {
 
@@ -92,6 +93,7 @@ public class ProgramTest {
         System.out.println("list2: " + list2);
         System.out.println("size list1: " + list.size());
         System.out.println("size list2: " + list2.size());
+
 
     }
 }

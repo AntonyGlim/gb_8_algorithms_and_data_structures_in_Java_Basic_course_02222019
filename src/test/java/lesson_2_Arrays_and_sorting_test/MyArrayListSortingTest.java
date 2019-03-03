@@ -18,9 +18,15 @@ import java.util.Random;
 @RunWith(Parameterized.class)
 public class MyArrayListSortingTest {
 
+<<<<<<< HEAD
+    private final int MAX = 100;
+    private final int MIN = 0;
+    private final int SIZE = 100000;
+=======
     private final int MAX = 10000000;
     private final int MIN = 0;
     private final int SIZE = 10000;
+>>>>>>> master
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {

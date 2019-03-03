@@ -1,3 +1,5 @@
+package lesson_3_Stack_and_queue
+
 import java.util.NoSuchElementException;
 
 public class MyArrayStack <Item> {
@@ -5,15 +7,20 @@ public class MyArrayStack <Item> {
     private  Object[] stack = new Object[1];
     private int size = 0;
 
-    /**
-     * TODO see teacher cod
-     * @return
-     */
+    public int size(){
+        return size;
+    }
+
     public boolean isEmpty(){
-        if (size > 0){
-            return true;
+        return size == 0;
+    }
+
+    public void resize(int capasity){
+        Object[] temp = new Object[capasity];
+        for (int i = 0; i < size; i++) {
+            temp[i] = stack[i];
         }
-        return false;
+        stack = temp;
     }
 
     public  void push (Item item){

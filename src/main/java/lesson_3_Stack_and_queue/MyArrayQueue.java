@@ -1,3 +1,5 @@
+package lesson_3_Stack_and_queue;
+
 import java.util.NoSuchElementException;
 
 public class MyArrayQueue <Item> {

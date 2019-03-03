@@ -1,3 +1,5 @@
+package lesson_3_Stack_and_queue;
+
 public class Expression {
     //(a + b) * ([b - 7] / {a - 5 * (a - 2)}) правильно расставлены скобки?
     // встречая скобку - помещаем ее в стек

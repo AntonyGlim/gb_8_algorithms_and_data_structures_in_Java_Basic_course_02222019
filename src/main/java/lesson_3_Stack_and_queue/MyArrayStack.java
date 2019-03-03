@@ -7,14 +7,26 @@ public class MyArrayStack <Item> {
     private  Object[] stack = new Object[1];
     private int size = 0;
 
+    /**
+     * Размеры стэка
+     * @return
+     */
     public int size(){
         return size;
     }
 
+    /**
+     * Стэк пуст?
+     * @return
+     */
     public boolean isEmpty(){
         return size == 0;
     }
 
+    /**
+     * Изменение размеров стека
+     * @param capasity
+     */
     public void resize(int capasity){
         Object[] temp = new Object[capasity];
         for (int i = 0; i < size; i++) {
@@ -23,6 +35,10 @@ public class MyArrayStack <Item> {
         stack = temp;
     }
 
+    /**
+     * Помещение элементов в стек
+     * @param item
+     */
     public  void push (Item item){
         if (size == stack.length){
             resize(2 * stack.length);
@@ -59,7 +75,7 @@ public class MyArrayStack <Item> {
     }
 
     /**
-     * Вывод
+     * Вывод (для красоты)
      * @return
      */
     @Override

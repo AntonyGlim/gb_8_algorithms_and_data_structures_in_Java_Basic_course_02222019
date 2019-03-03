@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Antony.Glim" />
         <module name="gb_8_algorithms_and_data_structures_in_Java_Basic_course_02222019" />
       </profile>
     </annotationProcessing>

@@ -51,7 +51,7 @@ public class MyArrayDeque <Item> {
      * Просмотреть элемент в конце дэка
      * @return
      */
-    public Item peekBack(){
+    public Item peakBack(){
         if (isEmpty()){
             throw new NoSuchElementException();
         }

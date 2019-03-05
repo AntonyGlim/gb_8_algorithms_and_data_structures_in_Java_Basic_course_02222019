@@ -65,6 +65,7 @@ public class MyArrayQueueTest {
             System.out.println("Не удалось удалить элементы из очереди. Размер очереди: " + queue.size());
         }
 
+        //peaking elements
         try{
             System.out.println("Symbol on top of queue: " +  queue.peak());
             System.out.println("Symbol must be: " +  symbolsBefore[3]);

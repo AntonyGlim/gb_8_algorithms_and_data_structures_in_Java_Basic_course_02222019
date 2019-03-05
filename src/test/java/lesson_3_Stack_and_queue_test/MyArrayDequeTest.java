@@ -68,8 +68,6 @@ public class MyArrayDequeTest {
         //popping elements from front
         try{
             System.out.println("popFront() : " + (char) deque.popFront());
-            System.out.println("popFront() : " + (char) deque.popFront());
-            System.out.println("popFront() : " + (char) deque.popFront());
         }catch (NoSuchElementException e){
             System.out.println("Can not get element from deque. Deque size: " + deque.size());
         }
@@ -81,9 +79,20 @@ public class MyArrayDequeTest {
             System.out.println("popBack() : " + (char) deque.popBack());
             System.out.println("popBack() : " + (char) deque.popBack());
         }catch (NoSuchElementException e){
-            System.out.println("Не удалось удалить элементы из очереди. Размер очереди: " + deque.size());
+            System.out.println("Can not get element from deque. Deque size: " + deque.size());
         }
         System.out.println("After popping elements back: " + deque + "(size = " + deque.size() + ")");
+
+        //peaking elements from front
+        try{
+            System.out.println("Symbol from front of deque: " +  deque.peakFront());
+            System.out.println("Symbol must be: " +  symbolsToFront[2]);
+            Assert.assertTrue(deque.peakFront().equals(symbolsToFront[2]));
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Can not get element from deque (IndexOutOfBounds). Deque size: " + deque.size());
+        } catch (NoSuchElementException e){
+            System.out.println("Can not get element from deque. Deque size: " + deque.size());
+        }
 
         //peaking elements from back
         try{
@@ -99,7 +108,9 @@ public class MyArrayDequeTest {
 
     @After
     public void result(){
-        System.out.println("After testing: " + deque + "(size = " + deque.size() + ")" + "\n");
+        System.out.println("After testing: " + deque + "(size = " + deque.size() + ")");
+        deque.clear();
+        System.out.println("After clearing deque size: " + deque.size() + "\n");
     }
 
 

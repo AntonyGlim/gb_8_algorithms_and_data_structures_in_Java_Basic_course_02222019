@@ -20,24 +20,20 @@ public class MyArrayDequeTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {new char[]{'a', 'b', 'c', 'd', 'e', 'z'}, new char[]{'1', '2', '3', '4'}, 10, new char[]{'d', 'e', 'z'} },
-                {new char[]{'z', 'x', 'c', 'y', 'e'}, new char[]{'3'}, 6, new char[]{'y', 'e'} },
-                {new char[]{'a', 'b', 'c', 'd', 'r', 'f', 'e'}, new char[]{'5', '6'}, 9, new char[]{'d', 'r', 'f', 'e'} },
-                {new char[]{'a', 'b', 'c', 'd'}, new char[]{'5', '6', '7', '8'}, 8, new char[]{'d'} },
-                {new char[]{}, new char[]{}, 0, new char[]{}},
+                {new char[]{'a', 'b', 'c', 'd', 'e', 'z'}, new char[]{'1', '2', '3', '4'}},
+                {new char[]{'z', 'x', 'c', 'y', 'e'}, new char[]{'3'}},
+                {new char[]{'a', 'b', 'c', 'd', 'r', 'f', 'e'}, new char[]{'5', '6'}},
+                {new char[]{'a', 'b', 'c', 'd'}, new char[]{'5', '6', '7', '8'}},
+                {new char[]{}, new char[]{}},
         });
     }
 
     private char[] symbolsToBack;
     private char[] symbolsToFront;
-    private int dequeSize;
-    private char[] symbolsAfter;
 
-    public MyArrayDequeTest(char[] symbolsToBack, char[] symbolsToFront, int dequeSize, char[] symbolsAfter) {
+    public MyArrayDequeTest(char[] symbolsToBack, char[] symbolsToFront) {
         this.symbolsToBack = symbolsToBack;
         this.symbolsToFront = symbolsToFront;
-        this.dequeSize = dequeSize;
-        this.symbolsAfter = symbolsAfter;
     }
 
     MyArrayDeque<Character> deque;

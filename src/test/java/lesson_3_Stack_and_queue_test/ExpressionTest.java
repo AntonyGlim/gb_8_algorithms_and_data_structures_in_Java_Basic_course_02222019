@@ -1,7 +1,6 @@
 package lesson_3_Stack_and_queue_test;
 
 import lesson_3_Stack_and_queue.Expression;
-import lesson_3_Stack_and_queue.MyArrayStack;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

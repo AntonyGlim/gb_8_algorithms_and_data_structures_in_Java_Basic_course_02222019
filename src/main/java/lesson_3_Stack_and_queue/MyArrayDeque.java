@@ -37,6 +37,51 @@ public class MyArrayDeque <Item> {
     }
 
     /**
+     * Добавление элемента в начало дэка
+     * @param item
+     */
+    public void pushFront(Item item){
+        if (size == deque.length){
+            resize(deque.length * 2);
+        }
+        for (int i = size; i > 0 ; i--) {
+            deque[i] = deque[i - 1];
+        }
+        size++;
+        deque[0] = item;
+    }
+
+    /**
+     * Просмотреть элемент в начале дэка
+     * @return
+     */
+    public Item peakFront(){
+        if (isEmpty()){
+            throw new NoSuchElementException();
+        }
+        return (Item) deque[0];
+    }
+
+    /**
+     * Извлечение элемента из начала дэка
+     * @return
+     */
+    public Item popFront(){
+        if (isEmpty()){
+            throw new NoSuchElementException();
+        }
+        Item item = (Item) deque[0];
+        size--;
+        for (int i = 0; i < size; i++) {
+            deque[i] = deque[i + 1];
+        }
+        if (size == deque.length / 4 && size > 0){
+            resize (deque.length / 2);
+        }
+        return item;
+    }
+
+    /**
      * Добавление элемента в конец дэка
      * @param item
      */

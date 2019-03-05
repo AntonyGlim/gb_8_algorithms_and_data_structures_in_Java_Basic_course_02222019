@@ -20,21 +20,23 @@ public class MyArrayDequeTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {new char[]{'a', 'b', 'c', 'd', 'e', 'z'}, 6, new char[]{'d', 'e', 'z'} },
-                {new char[]{'z', 'x', 'c', 'y', 'e'}, 5, new char[]{'y', 'e'} },
-                {new char[]{'a', 'b', 'c', 'd', 'r', 'f', 'e'}, 7, new char[]{'d', 'r', 'f', 'e'} },
-                {new char[]{'a', 'b', 'c', 'd'}, 4, new char[]{'d'} },
-                {new char[]{}, 0, new char[]{}},
+                {new char[]{'a', 'b', 'c', 'd', 'e', 'z'}, new char[]{'1', '2', '3', '4'}, 10, new char[]{'d', 'e', 'z'} },
+                {new char[]{'z', 'x', 'c', 'y', 'e'}, new char[]{'3'}, 6, new char[]{'y', 'e'} },
+                {new char[]{'a', 'b', 'c', 'd', 'r', 'f', 'e'}, new char[]{'5', '6'}, 9, new char[]{'d', 'r', 'f', 'e'} },
+                {new char[]{'a', 'b', 'c', 'd'}, new char[]{'5', '6', '7', '8'}, 8, new char[]{'d'} },
+                {new char[]{}, new char[]{}, 0, new char[]{}},
         });
     }
 
-    private char[] symbolsBefore;
-    private int DequeSize;
+    private char[] symbolsToBack;
+    private char[] symbolsToFront;
+    private int dequeSize;
     private char[] symbolsAfter;
 
-    public MyArrayDequeTest(char[] symbolsBefore, int dequeSize, char[] symbolsAfter) {
-        this.symbolsBefore = symbolsBefore;
-        DequeSize = dequeSize;
+    public MyArrayDequeTest(char[] symbolsToBack, char[] symbolsToFront, int dequeSize, char[] symbolsAfter) {
+        this.symbolsToBack = symbolsToBack;
+        this.symbolsToFront = symbolsToFront;
+        this.dequeSize = dequeSize;
         this.symbolsAfter = symbolsAfter;
     }
 
@@ -49,12 +51,29 @@ public class MyArrayDequeTest {
     @Test
     public void test1(){
 
-        //pushing elements back
-        for (int i = 0; i < symbolsBefore.length; i++) {
-            deque.pushBack(symbolsBefore[i]);
-            System.out.println("pushBack() : " + (char) symbolsBefore[i]);
+        //pushing elements front
+        for (int i = 0; i < symbolsToFront.length; i++) {
+            deque.pushFront(symbolsToFront[i]);
+            System.out.println("pushFront() : " + (char) symbolsToFront[i]);
         }
-        System.out.println("Before start testing: " + deque + "(size = " + deque.size() + ")");
+        System.out.println("After pushing elements front: " + deque + "(size = " + deque.size() + ")");
+
+        //pushing elements back
+        for (int i = 0; i < symbolsToBack.length; i++) {
+            deque.pushBack(symbolsToBack[i]);
+            System.out.println("pushBack() : " + (char) symbolsToBack[i]);
+        }
+        System.out.println("After pushing elements back: " + deque + "(size = " + deque.size() + ")");
+
+        //popping elements from front
+        try{
+            System.out.println("popFront() : " + (char) deque.popFront());
+            System.out.println("popFront() : " + (char) deque.popFront());
+            System.out.println("popFront() : " + (char) deque.popFront());
+        }catch (NoSuchElementException e){
+            System.out.println("Can not get element from deque. Deque size: " + deque.size());
+        }
+        System.out.println("After popping elements front: " + deque + "(size = " + deque.size() + ")");
 
         //popping elements from back
         try{
@@ -64,12 +83,13 @@ public class MyArrayDequeTest {
         }catch (NoSuchElementException e){
             System.out.println("Не удалось удалить элементы из очереди. Размер очереди: " + deque.size());
         }
+        System.out.println("After popping elements back: " + deque + "(size = " + deque.size() + ")");
 
         //peaking elements from back
         try{
             System.out.println("Symbol from back of deque: " +  deque.peakBack());
-            System.out.println("Symbol must be: " +  symbolsBefore[symbolsBefore.length - 4]);
-            Assert.assertTrue(deque.peakBack().equals(symbolsBefore[symbolsBefore.length - 4]));
+            System.out.println("Symbol must be: " +  symbolsToBack[symbolsToBack.length - 4]);
+            Assert.assertTrue(deque.peakBack().equals(symbolsToBack[symbolsToBack.length - 4]));
         } catch (ArrayIndexOutOfBoundsException e){
             System.out.println("Can not get element from deque. Deque size: " + deque.size());
         } catch (NoSuchElementException e){
@@ -79,7 +99,7 @@ public class MyArrayDequeTest {
 
     @After
     public void result(){
-        System.out.println("After start testing: " + deque + "(size = " + deque.size() + ")" + "\n");
+        System.out.println("After testing: " + deque + "(size = " + deque.size() + ")" + "\n");
     }
 
 

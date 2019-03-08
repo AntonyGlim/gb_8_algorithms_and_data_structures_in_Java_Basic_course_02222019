@@ -1,3 +1,5 @@
+package lesson_3_Stack_and_queue;
+
 import java.util.NoSuchElementException;
 
 public class MyArrayStack <Item> {
@@ -6,16 +8,37 @@ public class MyArrayStack <Item> {
     private int size = 0;
 
     /**
-     * TODO see teacher cod
+     * Размеры стэка
+     * @return
+     */
+    public int size(){
+        return size;
+    }
+
+    /**
+     * Стэк пуст?
      * @return
      */
     public boolean isEmpty(){
-        if (size > 0){
-            return true;
-        }
-        return false;
+        return size == 0;
     }
 
+    /**
+     * Изменение размеров стека
+     * @param capasity
+     */
+    public void resize(int capasity){
+        Object[] temp = new Object[capasity];
+        for (int i = 0; i < size; i++) {
+            temp[i] = stack[i];
+        }
+        stack = temp;
+    }
+
+    /**
+     * Помещение элементов в стек
+     * @param item
+     */
     public  void push (Item item){
         if (size == stack.length){
             resize(2 * stack.length);
@@ -52,7 +75,7 @@ public class MyArrayStack <Item> {
     }
 
     /**
-     * Вывод
+     * Вывод (для красоты)
      * @return
      */
     @Override

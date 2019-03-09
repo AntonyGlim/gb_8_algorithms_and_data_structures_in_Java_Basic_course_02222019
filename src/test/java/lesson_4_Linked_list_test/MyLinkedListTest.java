@@ -110,11 +110,44 @@ public class MyLinkedListTest {
             System.out.println("Error! Size = " + linkedList.size());
         }
 
-        //
+        //adding by index
+        try{
+            linkedList.add(0, '0');
+            System.out.println("add (index = 0; symbol = '0')");
+            linkedList.add(0, '0');
+            System.out.println("add (index = 0; symbol = '0')");
+            linkedList.add(3, '3');
+            System.out.println("add (index = 3; symbol = '3')");
+            linkedList.add(3, '3');
+            System.out.println("add (index = 3; symbol = '3')");
+            linkedList.add(5, '5');
+            System.out.println("add (index = 5; symbol = '5')");
+            linkedList.add(7, '7');
+            System.out.println("add (index = 7; symbol = '7')");
+        } catch (NoSuchElementException e){
+            System.out.println("Error! Size = " + linkedList.size());
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("IndexOutOfBounds! Size = " + linkedList.size());
+        }
+        System.out.println("After adding by index: " + linkedList + "(sise: " + linkedList.size() + ")");
+
+        try{
+            linkedList.remove('0');
+            System.out.println("remove (symbol = '0')");
+            linkedList.remove('0');
+            System.out.println("remove (symbol = '0')");
+            linkedList.remove('5');
+            System.out.println("remove (symbol = '5')");
+        } catch (NoSuchElementException e){
+            System.out.println("Error! Size = " + linkedList.size());
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("IndexOutOfBounds! Size = " + linkedList.size());
+        }
+        System.out.println("After removing by index: " + linkedList + "(sise: " + linkedList.size() + ")");
     }
 
     @After
     public void result(){
-        System.out.println("After start testing: " + linkedList + "(size = " + linkedList.size() + ")" + "\n");
+        System.out.println("After testing: " + linkedList + "(size = " + linkedList.size() + ")" + "\n");
     }
 }

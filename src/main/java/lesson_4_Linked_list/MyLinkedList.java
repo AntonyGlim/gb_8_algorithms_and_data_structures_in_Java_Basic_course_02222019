@@ -1,8 +1,29 @@
 package lesson_4_Linked_list;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class MyLinkedList<Item> {
+public class MyLinkedList<Item> implements Iterable<Item> {
+
+    public Iterator<Item> iterator() {
+        return new MyLinkedListIterator();
+    }
+
+    private class MyLinkedListIterator implements Iterator<Item>{
+
+        Node current = first;
+
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        public Item next() {
+            if (!hasNext()) throw new NoSuchElementException();
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
+    }
 
     /**
      * Вспомогательный класс
@@ -161,8 +182,64 @@ public class MyLinkedList<Item> {
         return indexOf(item) > -1;
     }
 
-    public Item remove(int index){
-        
+    /**
+     * Удаление о-та с определенным индексом
+     * @return
+     */
+    public Item remove(Item item){
+        Node current = first;
+        while (current != null && !current.item.equals(item)){ //список закончился
+            current = current.next;
+        }
+        if (current == null) return null;
+        if (current == first) return removeFirst();
+        if (current == last) return removeLast();
+
+        Node next = current.next;
+        Node previous = current.previous;
+        previous.next = next;
+        next.previous = previous;
+        size--;
+        current.next = null;
+        current.previous = null;
+        return current.item;
     }
 
+    /**
+     * Добавление элемента по индексу
+     */
+    public void add (int index, Item item){ //addBefore
+        if(index < 0 || index > size) throw  new IndexOutOfBoundsException(); //именно size а не size - 1
+        if (index == 0){
+            addFirst(item);
+            return;
+        }
+        if (index == size){
+            addLast(item);
+            return;
+        }
+
+        int currentIndex = 0;
+        Node current = first;
+        while (currentIndex < index){
+            current = current.next;
+            currentIndex++;
+        }
+        Node newNode = new Node(current.previous, item, current);
+        Node previous = current.previous;
+        previous.next = newNode;
+        current.previous = newNode;
+        size++;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        Node current = first;
+        while (current != null){
+            stringBuilder.append(current.item.toString()).append(", ");
+            current = current.next;
+        }
+        return stringBuilder.toString();
+    }
 }

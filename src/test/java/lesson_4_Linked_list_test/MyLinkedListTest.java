@@ -144,6 +144,12 @@ public class MyLinkedListTest {
             System.out.println("IndexOutOfBounds! Size = " + linkedList.size());
         }
         System.out.println("After removing by index: " + linkedList + "(sise: " + linkedList.size() + ")");
+
+        System.out.println("Iterator tests: ");
+        for (Character ch : linkedList) {
+            System.out.println("By iterator: " + ch);
+        }
+
     }
 
     @After

@@ -134,34 +134,43 @@ public class MyLinkedList<Item> implements Iterable<Item> {
     /**
      * Возврат элемента с определенным индексом
      * Для этого необходимо пройти по всем элементам до требуемого
-     * TODO добавить оптимизацию поиск с начала или с конца 00:57
      */
     public  Item get(int index){
-        if(index < 0 || index > size - 1) throw  new IndexOutOfBoundsException();
-        int currentIndex = 0;
-        Node current = first;
-        while (currentIndex < index){
-            current = current.next;
-            currentIndex++;
-        }
-        return current.item;
+        return findItemByIndex(index).item;
     }
 
     /**
      * Метод установит элемент на указанный индекс
-     * TODO добавить оптимизацию поиск с начала или с конца 00:58
      * @param index
      * @param item
      */
     public void set(int index, Item item){
+        findItemByIndex(index).item = item;
+    }
+
+    /**
+     * Метод найдет в массиве элемент по указанному индексу
+     * @param index
+     * @return
+     */
+    private Node findItemByIndex(int index){
         if(index < 0 || index > size - 1) throw  new IndexOutOfBoundsException();
         int currentIndex = 0;
         Node current = first;
-        while (currentIndex < index){
-            current = current.next;
-            currentIndex++;
+        if (index < size / 2){
+            while (currentIndex < index){
+                current = current.next;
+                currentIndex++;
+            }
+        } else {
+            currentIndex = size - 1;
+            current = last;
+            while (currentIndex > index){
+                current = current.previous;
+                currentIndex--;
+            }
         }
-        current.item = item;
+        return current;
     }
 
     /**
@@ -242,4 +251,5 @@ public class MyLinkedList<Item> implements Iterable<Item> {
         }
         return stringBuilder.toString();
     }
+
 }

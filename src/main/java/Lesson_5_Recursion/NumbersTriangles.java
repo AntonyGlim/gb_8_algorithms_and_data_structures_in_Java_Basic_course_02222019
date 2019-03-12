@@ -1,6 +1,6 @@
 package Lesson_5_Recursion;
 
-public class TrianglNumber {
+public class NumbersTriangles {
 
     //Дано натуральное число n. Найти -е треугольное число
     //t(n) = {1 + 2 ... +

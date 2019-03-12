@@ -1,6 +1,6 @@
 package Lesson_5_Recursion;
 
-public class SumSymbolsOfNumber {
+public class SumOfDigits {
 
     //Найти сумму цифр числа
     //f(n) - умма чисел

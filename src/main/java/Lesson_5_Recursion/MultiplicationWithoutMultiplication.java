@@ -3,7 +3,7 @@ package Lesson_5_Recursion;
 //Даны a b найи их произведение без умножения. a b > 0
 //a * b = a + a + a + ... + a
 //f(a,b) = f(a, b - 1) + a
-public class MultiWithoutMulti {
+public class MultiplicationWithoutMultiplication {
     public static void main(String[] args) {
         System.out.println(mult(7, 8));
         System.out.println(multRect(7, 8));

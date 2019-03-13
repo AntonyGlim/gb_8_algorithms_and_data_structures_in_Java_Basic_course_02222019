@@ -250,6 +250,7 @@ public class MyArrayList<Item> implements Iterable<Item>{
         if (comp.compare(item, (Item) list[mid]) == 0) return true;
         if (comp.compare(item, (Item) list[mid]) < 0) return binarySearchRec(item, low, mid - 1, comp);
         if (comp.compare(item, (Item) list[mid]) > 0) return binarySearchRec(item, mid + 1, high, comp);
+        return false;
     }
 
     public boolean binarySearchRec(Item item, Comparator<Item> comp){

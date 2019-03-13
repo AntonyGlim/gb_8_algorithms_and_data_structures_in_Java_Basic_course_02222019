@@ -13,18 +13,15 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * Тестирование класса MyFactorial
+ * Тестирование класса MyMultiplicationWithoutMultiplication
  * Проверка корректности вычисляемых значений.
  * Сравнение циклического и рекурсивного способа вычисления.
- * Способы сравниваются по количеству затраченого времени и
- * по затраченым ресурсам.
- *
- * Особенность! Даже с введением оптимизации,
+ * Способы сравниваются по количеству затраченого времени
  */
 @RunWith(Parameterized.class)
 public class MyMultiplicationWithoutMultiplicationTest {
 
-    static int count = 0;
+    static int count = -1;
     static long timeStart = 0L;
     static long timeStop = 0L;
 
@@ -36,6 +33,8 @@ public class MyMultiplicationWithoutMultiplicationTest {
                 {5, 5, 25},
                 {10, 10, 100},
                 {2, 1000000, 2000000},
+                {1000000, 2, 2000000},
+                {7000, 7000, 49000000L},
                 {-1, 0, 0}
         });
     }
@@ -61,7 +60,12 @@ public class MyMultiplicationWithoutMultiplicationTest {
     @Test
     public void test(){
         timeStart = System.currentTimeMillis();
-        int multC = multiplication.mult(a, b);
+        long multC = 0;
+        try {
+            multC = multiplication.mult(a, b);
+        } catch (ArithmeticException e){
+            System.out.println("Ошибка! Числа должны быть больше 0!");
+        }
         timeStop = System.currentTimeMillis();
 
         Assert.assertTrue(result == multC);
@@ -69,7 +73,12 @@ public class MyMultiplicationWithoutMultiplicationTest {
         System.out.println(String.format("Произведение (Цикл) время выполнения : %dмс;", (timeStop - timeStart)));
 
         timeStart = System.currentTimeMillis();
-        long multR = multiplication.multRec(a, b);
+        long multR = 0;
+        try {
+            multR = multiplication.multRec(a, b);
+        } catch (ArithmeticException e){
+            System.out.println("Ошибка! Числа должны быть больше 0!");
+        }
         timeStop = System.currentTimeMillis();
 
         Assert.assertTrue(result == multR);

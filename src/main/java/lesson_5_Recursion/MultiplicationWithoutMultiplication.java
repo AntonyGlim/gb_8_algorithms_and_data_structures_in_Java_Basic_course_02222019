@@ -1,4 +1,4 @@
-package Lesson_5_Recursion;
+package lesson_5_Recursion;
 
 //Даны a b найи их произведение без умножения. a b > 0
 //a * b = a + a + a + ... + a

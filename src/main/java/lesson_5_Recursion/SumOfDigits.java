@@ -1,4 +1,4 @@
-package Lesson_5_Recursion;
+package lesson_5_Recursion;
 
 public class SumOfDigits {
 

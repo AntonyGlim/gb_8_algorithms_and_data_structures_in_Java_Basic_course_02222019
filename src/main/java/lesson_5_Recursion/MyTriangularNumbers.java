@@ -1,14 +1,13 @@
 package lesson_5_Recursion;
 
+/**
+ * Дано натуральное число n. Найти n-е треугольное число
+ * f(n) = {1 + 2 ... + n);
+ * f(n) = f(n - 1) + n;
+ */
 public class MyTriangularNumbers {
 
-    //Дано натуральное число n. Найти -е треугольное число
-    //t(n) = {1 + 2 ... +
-    public static void main(String[] args) {
-
-    }
-
-    public static int triangl(int n){
+    public static int triangular(int n){
         int sum = 0;
         while ((n>0)){
             sum += n;
@@ -17,8 +16,9 @@ public class MyTriangularNumbers {
         return sum;
     }
 
-    public static int trianglRec(int n){
+    public static int triangularRec(int n){
         if (n == 2) return 1;
-        else return trianglRec(n - 1) + n;
+        else return triangularRec(n - 1) + n;
     }
+
 }

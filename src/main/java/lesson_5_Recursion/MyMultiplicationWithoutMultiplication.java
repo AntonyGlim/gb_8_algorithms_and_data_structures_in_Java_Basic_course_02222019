@@ -7,11 +7,6 @@ package lesson_5_Recursion;
  */
 public class MyMultiplicationWithoutMultiplication {
 
-    public static void main(String[] args) {
-        MyMultiplicationWithoutMultiplication mm = new MyMultiplicationWithoutMultiplication();
-        mm.multRec(1000000, 2);
-    }
-
     /**
      * Метод найдет произведение 2 чисел в цикле
      * @param a
@@ -30,16 +25,25 @@ public class MyMultiplicationWithoutMultiplication {
     }
 
     /**
-     * Метод найдет произведение 2 чисел используя рекурсию
-     * TODO добавить оптимизацию
-     * @param a
-     * @param b
-     * @return
+     * Является вспомогательным методом.
+     * Обеспечивает оптимизацию выполнения по меньшему аргументу.
+     * Вызывает приватный метод multRect,
+     * в котором и организована рекурсия.
      */
     public int multRec(int a, int b){
+        if (a < 0 || b < 0) throw new ArithmeticException();
+        int min = min(a, b);
+        int max = max(a, b);
+        return multRect(max, min);
+    }
+
+    /**
+     * Метод найдет произведение 2 чисел используя рекурсию
+     */
+    private int multRect(int a, int b){
         if (b == 0) return 0;
         if (b == 1) return a;
-        else return multRec(a, b - 1) + a;
+        else return multRect(a, b - 1) + a;
     }
 
     /**

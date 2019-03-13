@@ -7,16 +7,22 @@ package lesson_5_Recursion;
  */
 public class MyTriangularNumbers {
 
-    public static int triangular(int n){
+    /**
+     *  Вычисляем при помощи циклов
+     */
+    public int triangular(int n){
         int sum = 0;
-        while ((n>0)){
+        while ((n > 0)){
             sum += n;
             n--;
         }
         return sum;
     }
 
-    public static int triangularRec(int n){
+    /**
+     *  Вычисляем при помощи рекурсии
+     */
+    public int triangularRec(int n){
         if (n == 2) return 1;
         else return triangularRec(n - 1) + n;
     }

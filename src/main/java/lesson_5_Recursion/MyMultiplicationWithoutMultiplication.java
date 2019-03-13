@@ -1,47 +1,53 @@
 package lesson_5_Recursion;
 
-//Даны a b найи их произведение без умножения. a b > 0
-//a * b = a + a + a + ... + a
-//f(a,b) = f(a, b - 1) + a
+/**
+ * Даны a и b найи их произведение без умножения. a и b > 0
+ * a * b = a + a + a + ... + a (b раз)
+ * f(a,b) = f(a, b - 1) + a
+ */
 public class MyMultiplicationWithoutMultiplication {
-    public static void main(String[] args) {
-        System.out.println(mult(7, 8));
-        System.out.println(multRect(7, 8));
-    }
 
     /**
-     * Если 1 и 10000000 то очень не эффективно
+     * Метод найдет произведение 2 чисел в цикле
      * @param a
      * @param b
      * @return
      */
-    public static int mult(int a, int b){
+    public int mult(int a, int b){
         int sum = 0;
-
-        //оптимизация для плохого случая
-        if (b > a) {
-            int temp = a;
-            a = b;
-            b = temp;
-        }
-
-        while (b > 0){
-            sum += a;
-            b--;
+        int min = min(a, b);
+        int max = max(a, b);
+        while (min > 0){
+            sum += max;
+            min--;
         }
         return sum;
     }
 
     /**
-     * Несколько рекурсивных случаев
+     * Метод найдет произведение 2 чисел используя рекурсию
      * @param a
      * @param b
      * @return
      */
-    public static int multRect(int a, int b){
+    public static int multRec(int a, int b){
         if (b == 0) return 0;
-        else if (b == 1) return a;
-        else return multRect(a, b - 1) + a;
+        if (b == 1) return a;
+        else return multRec(a, b - 1) + a;
+    }
+
+    /**
+     * Вынесем методы нахождения максимального и минимального чисел отдельно.
+     * Определить какое число больше необходимо для того,
+     * чтобы избежать худшего из возможных случаев, например:
+     * 1 и 10000000. Мы можем выполнить алгоритм за 10000000 раз а можем за 1
+     */
+    private int min(int a, int b){
+        return a < b ? a : b;
+    }
+
+    private int max(int a, int b){
+        return a > b ? a : b;
     }
 
 }

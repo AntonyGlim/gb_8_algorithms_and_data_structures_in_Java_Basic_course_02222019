@@ -18,6 +18,8 @@ import java.util.Collection;
  * Сравнение циклического и рекурсивного способа вычисления.
  * Способы сравниваются по количеству затраченого времени и
  * по затраченым ресурсам.
+ *
+ * Особенность! Даже с введением оптимизации,
  */
 @RunWith(Parameterized.class)
 public class MyMultiplicationWithoutMultiplicationTest {

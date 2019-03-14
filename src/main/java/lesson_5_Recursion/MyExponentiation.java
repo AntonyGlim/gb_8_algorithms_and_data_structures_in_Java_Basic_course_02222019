@@ -50,6 +50,10 @@ public class MyExponentiation {
     public long qExpoRec(int a, int n){
         if (n == 1) return a;
         if (n < 1) return 1;
-        else return qExpoRec(a * a, n / 2) * a;
+        if (n % 2 != 0) {
+            n--;
+            return qExpoRec(a, n) * a;
+        }
+        else return qExpoRec(a * a, n / 2);
     }
 }

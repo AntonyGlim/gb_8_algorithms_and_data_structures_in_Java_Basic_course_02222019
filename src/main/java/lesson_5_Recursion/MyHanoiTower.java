@@ -12,37 +12,62 @@ import lesson_3_Stack_and_queue.MyArrayStack;
  */
 public class MyHanoiTower {
 
-    MyArrayStack<Integer> kernel1;
-    MyArrayStack<Integer> kernel2;
-    MyArrayStack<Integer> kernelTemp;
-    int n;
+    MyArrayStack<Integer> kernel1; //начальный стержень
+    MyArrayStack<Integer> kernel2; //конечный стержень
+    MyArrayStack<Integer> kernelTemp; //промежуточный
+    int n; //количество колец
+
 
     public MyHanoiTower(int n) {
+
         this.n = n;
+
+        //инициализируем 3 стержня
         kernel1 = new MyArrayStack();
         kernel2 = new MyArrayStack();
         kernelTemp = new MyArrayStack();
 
-        for (int i = n; i > 0; i--) {
-            kernel1.push(i);
-        }
+        //нанизываем кольца на стержень
+        for (int i = n; i > 0; i--) kernel1.push(i);
 
+        //выводим состояние игры до начала перестановок
         printCondition();
 
+        //стартуем игру
         moveTower(n, kernel1, kernel2, kernelTemp);
     }
 
+    /**
+     * Метод выводи на экран текущее состояние стержней
+     * на которые нанизаны кольца.
+     * Грубо говоря - это кадр анимации
+     */
     public void printCondition(){
-        System.out.println("\n" + "Старт : " + kernel1);
+        System.out.println();
+        System.out.println("Старт : " + kernel1);
         System.out.println("Финиш : " + kernel2);
-        System.out.println("Темп  : " + kernelTemp + "\n");
+        System.out.println("Темп  : " + kernelTemp);
+        System.out.println();
     }
 
+    /**
+     * Метод перемещает кольцо с одного стержня на другой
+     * @param kernel1 - стержень 1
+     * @param kernel2 - стержень 2
+     */
     public void move(MyArrayStack<Integer> kernel1, MyArrayStack<Integer> kernel2){
-        kernel2.push(kernel1.pop());
-        printCondition();
+        kernel2.push(kernel1.pop()); //извлекаем из одного стэка и кладем в другой
+        printCondition(); //выводим текущее состояние "поля"
     }
 
+    /**
+     * Метод использует рекурсию.
+     * Чтобы переложить n колец с Старт на Финиш нужно:
+     * 1. Переложить (n - 1) колец на Темп;
+     * 2. Переложить последнее кольцо с Старт на Финиш;
+     * 3. ереложить (n - 1) колец на Финиш;
+     * Условие выхода из рекурсии - когда мы дошли до последнего кольца
+     */
     public void moveTower(
             int n,
             MyArrayStack<Integer> kernel1,
@@ -55,8 +80,11 @@ public class MyHanoiTower {
         moveTower(n - 1, kernelTemp, kernel2, kernel1);
     }
 
+    /**
+     * Тестируем в main
+     */
     public static void main(String[] args) {
-        MyHanoiTower tower = new MyHanoiTower(4);
+        MyHanoiTower tower = new MyHanoiTower(16);
     }
 
 }

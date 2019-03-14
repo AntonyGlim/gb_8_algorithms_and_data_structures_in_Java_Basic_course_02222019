@@ -15,23 +15,27 @@ public class MyHanoiTower {
     MyArrayStack<Integer> kernel1;
     MyArrayStack<Integer> kernel2;
     MyArrayStack<Integer> kernelTemp;
+    int n;
 
-    public void initTowers(int n){
-
+    public MyHanoiTower(int n) {
+        this.n = n;
         kernel1 = new MyArrayStack();
         kernel2 = new MyArrayStack();
         kernelTemp = new MyArrayStack();
 
-        for (int i = 1; i <= n; i++) {
+        for (int i = n; i > 0; i--) {
             kernel1.push(i);
         }
+
         printCondition();
+
+        moveTower(n, kernel1, kernel2, kernelTemp);
     }
 
     public void printCondition(){
-        System.out.println("\n" + kernel1);
-        System.out.println(kernel2);
-        System.out.println(kernelTemp + "\n");
+        System.out.println("\n" + "Старт : " + kernel1);
+        System.out.println("Финиш : " + kernel2);
+        System.out.println("Темп  : " + kernelTemp + "\n");
     }
 
     public void move(MyArrayStack<Integer> kernel1, MyArrayStack<Integer> kernel2){
@@ -52,12 +56,7 @@ public class MyHanoiTower {
     }
 
     public static void main(String[] args) {
-        MyHanoiTower tower = new MyHanoiTower();
-        tower.initTowers(3);
-        tower.moveTower(3, tower.kernel1, tower.kernel2, tower.kernelTemp);
-
+        MyHanoiTower tower = new MyHanoiTower(4);
     }
-
-
 
 }

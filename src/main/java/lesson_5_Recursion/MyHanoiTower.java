@@ -1,5 +1,7 @@
 package lesson_5_Recursion;
 
+import lesson_3_Stack_and_queue.MyArrayStack;
+
 /**
  *  Даны три стержня, на один из которых нанизаны колец,
  *  причём кольца отличаются размером и лежат меньшее на большем.
@@ -10,11 +12,39 @@ package lesson_5_Recursion;
  */
 public class MyHanoiTower {
 
-    public void move(char kernel1, char kernel2){
-        System.out.println(String.format("Из стрежня %s на стержень %s", kernel1, kernel2 ));
+    MyArrayStack<Integer> kernel1;
+    MyArrayStack<Integer> kernel2;
+    MyArrayStack<Integer> kernelTemp;
+
+    public void initTowers(int n){
+
+        kernel1 = new MyArrayStack();
+        kernel2 = new MyArrayStack();
+        kernelTemp = new MyArrayStack();
+
+        for (int i = 1; i <= n; i++) {
+            kernel1.push(i);
+        }
+        printCondition();
     }
 
-    public void moveTower(int n, char kernel1, char kernel2, char kernelTemp){
+    public void printCondition(){
+        System.out.println("\n" + kernel1);
+        System.out.println(kernel2);
+        System.out.println(kernelTemp + "\n");
+    }
+
+    public void move(MyArrayStack<Integer> kernel1, MyArrayStack<Integer> kernel2){
+        kernel2.push(kernel1.pop());
+        printCondition();
+    }
+
+    public void moveTower(
+            int n,
+            MyArrayStack<Integer> kernel1,
+            MyArrayStack<Integer> kernel2,
+            MyArrayStack<Integer> kernelTemp
+    ){
         if(n == 0) return;
         moveTower(n - 1, kernel1, kernelTemp, kernel2);
         move(kernel1, kernel2);
@@ -23,7 +53,11 @@ public class MyHanoiTower {
 
     public static void main(String[] args) {
         MyHanoiTower tower = new MyHanoiTower();
-        tower.moveTower(8, 'A', 'B', 'C');
+        tower.initTowers(3);
+        tower.moveTower(3, tower.kernel1, tower.kernel2, tower.kernelTemp);
+
     }
+
+
 
 }

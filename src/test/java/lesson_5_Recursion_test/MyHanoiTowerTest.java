@@ -1,9 +1,7 @@
 package lesson_5_Recursion_test;
 
-import lesson_5_Recursion.MyExponentiation;
 import lesson_5_Recursion.MyHanoiTower;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,7 +44,7 @@ public class MyHanoiTowerTest {
 
     @Before
     public void init() {
-        towerTest = new MyHanoiTower();
+        towerTest = new MyHanoiTower(6);
         System.out.println("Test #" + ++count);
     }
 

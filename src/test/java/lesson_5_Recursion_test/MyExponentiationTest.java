@@ -33,6 +33,8 @@ public class MyExponentiationTest {
                 {10, 2, 100},
                 {5, 2, 25},
                 {3, 4, 81},
+                {3, 3, 27},
+                {3, 5, 243},
                 {12, 12, 8916100448256L},
                 {14, 14, 11112006825558016L}
         });
@@ -58,21 +60,38 @@ public class MyExponentiationTest {
 
     @Test
     public void test(){
+
+        //степень через цикл
         timeStart = System.currentTimeMillis();
         long expC = exponentiation.expo(a, n);
         timeStop = System.currentTimeMillis();
-
         Assert.assertTrue(result == expC);
         System.out.println(String.format("Результат (Цикл) для числа %d в степени %d : %d;",a, n, expC));
         System.out.println(String.format("Результат (Цикл) время выполнения : %dмс;", (timeStop - timeStart)));
 
+        //степень через цикл (быстрая)
+        timeStart = System.currentTimeMillis();
+        long qExpC = exponentiation.qExpo(a, n);
+        timeStop = System.currentTimeMillis();
+        Assert.assertTrue(result == qExpC);
+        System.out.println(String.format("Результат (Цикл быстрая) для числа %d в степени %d : %d;",a, n, qExpC));
+        System.out.println(String.format("Результат (Цикл быстрая) время выполнения : %dмс;", (timeStop - timeStart)));
+
+        //степень через рекурсию
         timeStart = System.currentTimeMillis();
         long expR = exponentiation.expoRec(a, n);
         timeStop = System.currentTimeMillis();
-
         Assert.assertTrue(result == expR);
         System.out.println(String.format("Результат (Рекурсия) для числа %d в степени %d : %d;",a, n, expR));
         System.out.println(String.format("Результат (Рекурсия) время выполнения : %dмс;", (timeStop - timeStart)));
+
+        //степень через рекурсию(быстрая)
+        timeStart = System.currentTimeMillis();
+        long qExpR = exponentiation.qExpo(a, n);
+        timeStop = System.currentTimeMillis();
+        Assert.assertTrue(result == qExpR);
+        System.out.println(String.format("Результат (Рекурсия быстрая) для числа %d в степени %d : %d;",a, n, qExpR));
+        System.out.println(String.format("Результат (Рекурсия быстрая) время выполнения : %dмс;", (timeStop - timeStart)));
     }
 
     @After

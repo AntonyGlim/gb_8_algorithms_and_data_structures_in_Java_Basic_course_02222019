@@ -36,6 +36,7 @@ public class MyExponentiationTest {
                 {3, 3, 27},
                 {3, 5, 243},
                 {12, 12, 8916100448256L},
+                {13, 13, 302875106592253L},
                 {14, 14, 11112006825558016L}
         });
     }
@@ -87,7 +88,7 @@ public class MyExponentiationTest {
 
         //степень через рекурсию(быстрая)
         timeStart = System.currentTimeMillis();
-        long qExpR = exponentiation.qExpo(a, n);
+        long qExpR = exponentiation.qExpoRec(a, n);
         timeStop = System.currentTimeMillis();
         Assert.assertTrue(result == qExpR);
         System.out.println(String.format("Результат (Рекурсия быстрая) для числа %d в степени %d : %d;",a, n, qExpR));

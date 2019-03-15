@@ -236,4 +236,24 @@ public class MyArrayList<Item> implements Iterable<Item>{
         }
         return false;
     }
+
+    /**
+     * Скрытый метод с реализацией рекурсии
+     * Мы должны управлять границами.
+     * А пользователю не нужна информация о границах
+     * Поэтому метода 2. Один для пользователя, второй служебный
+     * TODO - почему ошибка
+     */
+    private boolean binarySearchRec(Item item, int low, int high, Comparator<Item> comp){
+        if (low > high) return false;
+        int mid = low + (high - low) / 2;
+        if (comp.compare(item, (Item) list[mid]) == 0) return true;
+        if (comp.compare(item, (Item) list[mid]) < 0) return binarySearchRec(item, low, mid - 1, comp);
+        if (comp.compare(item, (Item) list[mid]) > 0) return binarySearchRec(item, mid + 1, high, comp);
+        return false;
+    }
+
+    public boolean binarySearchRec(Item item, Comparator<Item> comp){
+        return binarySearchRec(item, 0, size - 1, comp);
+    }
 }

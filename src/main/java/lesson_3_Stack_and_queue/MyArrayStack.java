@@ -81,7 +81,7 @@ public class MyArrayStack <Item> {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = size - 1; i >= 0; i--) {
+        for (int i = 0; i < size; i++) {
             stringBuilder.append((Item) stack[i].toString());
             stringBuilder.append(", ");
         }

@@ -12,5 +12,20 @@ public class Programm {
         tree.put('X', 0);
         tree.put('M', 0);
         tree.remove('E');
+        for (int i = 0; i < 500; i++) {
+            System.out.println(rnd(-100, 100));
+        }
+
+    }
+
+    /**
+     * Функция вернет случайное число из указанного диапазона
+     * @param min - включительно. min должно быть отрицательным числом
+     * @param max - включительно
+     * @return - псевдослучайное целое число
+     */
+    public static int rnd(int min, int max){
+        int diapason = max + Math.abs(min) + 1;
+        return  (int) (Math.random() * diapason) - max;
     }
 }

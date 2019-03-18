@@ -12,6 +12,15 @@ public class Programm {
         tree.put('X', 0);
         tree.put('M', 0);
         tree.put('P', 0);
+        tree.remove('P');
+
+        MyBinaryTree<Integer, Character> integerTree = new MyBinaryTree<Integer, Character>();
+        integerTree.put(1, 'A');
+        integerTree.put(2, 'A');
+        integerTree.put(3, 'A');
+        integerTree.put(4, 'A');
+        integerTree.put(5, 'A');
+        integerTree.remove(5);
 
     }
 

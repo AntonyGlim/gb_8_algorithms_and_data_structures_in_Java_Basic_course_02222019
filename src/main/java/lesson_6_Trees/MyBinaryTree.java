@@ -184,6 +184,7 @@ public class MyBinaryTree<Key extends Comparable<Key>, Value> {
             tmp = null;
         }
         node.size = size(node.leftTree) + size(node.rightTree) + 1;//обновим size у каждого узла
+        node.height--;
         return node;
     }
 

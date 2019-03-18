@@ -11,10 +11,7 @@ public class Programm {
         tree.put('H', 0);
         tree.put('X', 0);
         tree.put('M', 0);
-        tree.remove('E');
-        for (int i = 0; i < 500; i++) {
-            System.out.println(rnd(-100, 100));
-        }
+        tree.put('P', 0);
 
     }
 

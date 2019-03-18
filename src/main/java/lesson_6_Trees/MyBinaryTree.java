@@ -46,8 +46,12 @@ public class MyBinaryTree<Key extends Comparable<Key>, Value> {
      * @return - количество узлов в дереве, корнем которого является данный узел
      */
     private int size(Node node){
-        if(node == null) return 0;
-        else return node.size;
+        if(node == null) {
+            return 0;
+        }
+        else {
+            return node.size;
+        }
     }
 
     /**
@@ -64,8 +68,12 @@ public class MyBinaryTree<Key extends Comparable<Key>, Value> {
      * @return - высоту данного узла
      */
     private int height(Node node){
-        if(node == null) return 0;
-        else return node.height;
+        if(node == null) {
+            return 0;
+        }
+        else {
+            return node.height;
+        }
     }
 
     /**
@@ -106,14 +114,37 @@ public class MyBinaryTree<Key extends Comparable<Key>, Value> {
      * @return
      */
     public Node put(Node node, Key key, Value value){
-        if (key == null) throw new IllegalArgumentException("Не может быть такого значения!");
-        if (node == null) return new Node(key, value, 1);//дошди до низа и можем вставить узел. Вернем ссылку на узел
+        if (key == null) {
+            throw new IllegalArgumentException("Не может быть такого значения!");
+        }
+        if (node == null) {
+            return new Node(key, value, 1);//дошди до низа и можем вставить узел. Вернем ссылку на узел
+        }
         int cmp = key.compareTo(node.key);
-        if (cmp == 0) node.value = value;
-        if (cmp < 0) node.leftTree = put(node.leftTree, key, value);
-        else /* (cmp > 0) */ node.rightTree = put(node.rightTree, key, value); //вставили новый или обновили значение
+        if (cmp == 0) {
+            node.value = value;
+        }
+        if (cmp < 0) {
+            node.leftTree = put(node.leftTree, key, value);
+        }
+        else /* (cmp > 0) */ {
+            node.rightTree = put(node.rightTree, key, value); //вставили новый или обновили значение
+        }
 
         node.size = size(node.leftTree) + size(node.rightTree) + 1;//обновим size у каждого узла
+        if ((node.leftTree != null
+                && node.rightTree != null
+                && height(node.leftTree) >= height(node.rightTree))
+                || (node.leftTree != null && node.rightTree == null)) {
+            node.height = node.leftTree.height + 1;
+        } else if ((node.leftTree != null
+                && node.rightTree != null
+                && height(node.leftTree) < height(node.rightTree))
+                || (node.leftTree == null && node.rightTree != null)
+                ){
+            node.height = node.rightTree.height + 1;
+        }
+//        node.height = height(node.leftTree) >= height(node.rightTree) ? node.leftTree.height + 1 : node.rightTree.height + 1;
         return node;
     }
 

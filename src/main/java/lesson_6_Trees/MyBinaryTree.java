@@ -16,11 +16,13 @@ public class MyBinaryTree<Key extends Comparable<Key>, Value> {
         Node leftTree; //ссылка на левое дерево
         Node rightTree; //ссылка на правое дерево
         int size; //количество узлов в дереве, корнем которого является данный узел
+        int height; //хранит высоту данного узла
 
         public Node(Key key, Value value, int size) {
             this.key = key;
             this.value = value;
             this.size = size;
+            this.height = 0;
         }
     }
 
@@ -32,7 +34,7 @@ public class MyBinaryTree<Key extends Comparable<Key>, Value> {
 
     /**
      * Интерфейсный метод
-     * @return
+     * @return - количество узлов в дереве, корнем которого является данный узел
      */
     public int size(){
         return size(root);
@@ -41,11 +43,29 @@ public class MyBinaryTree<Key extends Comparable<Key>, Value> {
     /**
      * Метод для всей грязной работы
      * @param node
-     * @return
+     * @return - количество узлов в дереве, корнем которого является данный узел
      */
     private int size(Node node){
         if(node == null) return 0;
         else return node.size;
+    }
+
+    /**
+     * Интерфейсный метод
+     * @return - высоту данного узла
+     */
+    public int height(){
+        return height(root);
+    }
+
+    /**
+     * Метод для всей грязной работы
+     * @param node
+     * @return - высоту данного узла
+     */
+    private int height(Node node){
+        if(node == null) return 0;
+        else return node.height;
     }
 
     /**

@@ -158,6 +158,17 @@ public class MyBinaryTree<Key extends Comparable<Key>, Value> {
     }
 
     /**
+     * Сбалансировано дерево?
+     * @param node1
+     * @param node2
+     * @return
+     */
+    public boolean isBalanced(Node node1, Node node2){
+        if(height(root) == 0) return true; //если дерево пустое - оно сбалансировано
+        
+    }
+
+    /**
      * Удаление узла
      */
     public void remove(Key key){

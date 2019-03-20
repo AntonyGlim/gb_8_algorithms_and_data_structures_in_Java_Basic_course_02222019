@@ -26,7 +26,7 @@ public class Program {
         myGraph.addEdge(6, 8);
         myGraph.addEdge(8, 9);
 
-        BreadthFirstSaerch searchPath = new BreadthFirstSaerch(myGraph, 0);
+        BreadthFirstSearch searchPath = new BreadthFirstSearch(myGraph, 0);
         System.out.println(searchPath.hasPathTo(5));
         System.out.println(searchPath.pathTo(3));
         System.out.println(searchPath.pathTo(5));

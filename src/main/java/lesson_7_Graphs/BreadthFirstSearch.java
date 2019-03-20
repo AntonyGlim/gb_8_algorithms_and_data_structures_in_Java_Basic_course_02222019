@@ -5,14 +5,14 @@ import java.util.LinkedList;
 /**
  * Алгритм (BFS) обхода графа в ширину
  */
-public class BreadthFirstSaerch {
+public class BreadthFirstSearch {
         private int[] edgeTo;
         private int[] distTo;
         private boolean[] marked;
         private int source;
         private static final int INF = Integer.MAX_VALUE;
 
-    public BreadthFirstSaerch(MyGraph graph, int source) {
+    public BreadthFirstSearch(MyGraph graph, int source) {
         if (source < 0){
             throw  new IllegalArgumentException();
         }
@@ -52,8 +52,6 @@ public class BreadthFirstSaerch {
             }
 
         }
-
-
     }
 
     /**
@@ -88,6 +86,11 @@ public class BreadthFirstSaerch {
         return stack;
     }
 
+    /**
+     * Кратчайшее расстояние
+     * @param dist
+     * @return
+     */
     public int distTo(int dist){
         if (dist < 0){
             throw  new IllegalArgumentException();

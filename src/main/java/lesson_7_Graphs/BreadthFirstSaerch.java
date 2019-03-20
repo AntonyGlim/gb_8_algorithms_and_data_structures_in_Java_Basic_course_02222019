@@ -3,7 +3,7 @@ package lesson_7_Graphs;
 import java.util.LinkedList;
 
 /**
- * поиск в глубину
+ * Алгритм (BFS) обхода графа в ширину
  */
 public class BreadthFirstSaerch {
         private int[] edgeTo;
@@ -23,24 +23,30 @@ public class BreadthFirstSaerch {
         edgeTo = new int[graph.vertexCount()];
         distTo = new int[graph.vertexCount()];
         for (int i = 0; i < distTo.length; i++) {
-            distTo[i] = INF;
+            distTo[i] = INF; //от текущей до всех остальных - нет пути
         }
         this.source = source;
+        bfs(graph, source); //вызываем алгоритм на обработку
     }
 
+    /**
+     * Обход графа в ширину
+     * @param graph
+     * @param source
+     */
     private void bfs(MyGraph graph, int source){
         LinkedList<Integer> queue = new LinkedList<Integer>();
-        queue.addLast(source);
+        queue.addLast(source); //добавляем в очередь для проверки
         marked[source] = true;
         distTo[source] = 0;
 
         while (!queue.isEmpty()){
             int v = queue.removeFirst();
-            for (int w : graph.adjastmentLists(v)) {
-                if (!marked[w]){
+            for (int w : graph.adjastmentLists(v)) { //идем по списку смежных вершин
+                if (!marked[w]){ //если еще не посетили
                     marked[w] = true;
                     edgeTo[w] = v;
-                    distTo[w] = distTo[w] + 1;
+                    distTo[w] = distTo[v] + 1;
                     queue.addLast(w);
                 }
             }
@@ -50,6 +56,11 @@ public class BreadthFirstSaerch {
 
     }
 
+    /**
+     * Существует путь до вершины?
+     * @param dist
+     * @return
+     */
     public boolean hasPathTo(int dist){
         if (dist < 0){
             throw  new IllegalArgumentException();

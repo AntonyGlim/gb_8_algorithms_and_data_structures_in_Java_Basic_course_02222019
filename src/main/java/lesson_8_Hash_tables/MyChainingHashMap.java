@@ -29,7 +29,7 @@ public class MyChainingHashMap<Key, Value> {
      * Ф-ыя найдет нужный нам хэш
      */
     public int hash(Key key){
-        return (key.hashCode() & 0x7fffffff) % M;
+        return (key.hashCode() & 0x7fffffff) % M; //убираем минус и отсекаем последнюю единицу
     }
 
     public Value get(Key key){
@@ -57,16 +57,16 @@ public class MyChainingHashMap<Key, Value> {
         }
         int i = hash(key);
         Node x = (Node) st[i];
-        while (x != null){
-            if (key.equals((x.key))){
+        while (x != null){ //возникла коллизия
+            if (key.equals((x.key))){ //если ключ уже присутствует в массиве
                 x.value = value;
                 return;
             }
             x = x.next;
         }
-        st[i] = new Node(key, value, (Node) st[i]);
+        st[i] = new Node(key, value, (Node) st[i]); //1:25
         size++;
     }
 
-    //Метод ремув в ДЗ
+    //Метод remove в ДЗ
 }

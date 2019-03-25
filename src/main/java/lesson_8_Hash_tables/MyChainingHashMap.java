@@ -68,5 +68,6 @@ public class MyChainingHashMap<Key, Value> {
         size++;
     }
 
-    //Метод remove в ДЗ
+    //TODO Метод remove
+    //TODO Метод resize
 }
